@@ -16,16 +16,16 @@ binary_tree_t *binary_tree_insert_left(binary_tree_t *parent, int value)
 		return (NULL);
 	if (!parent->left)
 	{
-		printf("--- 1 ---\n");
 		parent->left = binary_tree_node(parent, value);
-		printf("--- 2 ---\n");
-		printf("{%d}\n", parent->left->n);
+		if (!parent->left)
+			return (NULL);
 		return (parent->left);
 	}
 	left_node = binary_tree_node(parent, value);
 	if (!left_node)
 		return (NULL);
 	left_node->left = parent->left;
+	left_node->left->parent = left_node;
 	parent->left = left_node;
 	return (left_node);
 }
