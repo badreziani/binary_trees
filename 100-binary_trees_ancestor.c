@@ -13,19 +13,19 @@ binary_tree_t *binary_trees_ancestor(
 
 	if (!first || !second)
 		return (NULL);
-	a = first;
-	b = second;
+	a = (binary_tree_t *)first;
+	b = (binary_tree_t *)second;
 
 	while (a != b)
 	{
 		if (a)
 			a = a->parent;
 		else
-			a = second;
+			a = (binary_tree_t *)second;
 		if (b)
 			b = b->parent;
 		else
-			b = first;
+			b = (binary_tree_t *)first;
 	}
 	return (a);
 }
